@@ -6,6 +6,8 @@ module FormtasticBootstrap
 
       # TODO Make sure help blocks work correctly.
 
+      alias hidden_fields? hidden_fields_for_every?
+
       def to_html
         bootstrap_wrapping do
           hidden_field_for_all << # Might need to remove this guy.
@@ -35,7 +37,6 @@ module FormtasticBootstrap
           :class => class_name
         )
       end
-
     end
   end
 end
