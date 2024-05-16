@@ -8,9 +8,9 @@ module FormtasticBootstrap
 
       def to_html
         bootstrap_wrapping do
-          collection.map { |choice|
+          html_safe(collection.map { |choice|
             choice_html(choice)
-          }.join("\n").html_safe
+          }.join("\n"))
         end
       end
 
@@ -36,7 +36,7 @@ module FormtasticBootstrap
         class_name = "radio"
         class_name += " radio-inline" if options[:inline]
         template.content_tag(:div,
-          template.capture(&block).html_safe,
+          html_safe(template.capture(&block)),
           :class => class_name
         )
       end

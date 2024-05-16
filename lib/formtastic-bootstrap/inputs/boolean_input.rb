@@ -30,9 +30,9 @@ module FormtasticBootstrap
 
       def checkbox_wrapping(&block)
         template.content_tag(:div,
-          template.capture(&block).html_safe,
+        html_safe(template.capture(&block),
           wrapper_html_options
-        )
+        ))
       end
 
       def wrapper_html_options
@@ -41,6 +41,14 @@ module FormtasticBootstrap
         end
       end
 
+      # method from formtastic 3.1
+      def html_safe(text)
+        if text.respond_to?(:html_safe)
+          text.html_safe
+        else
+          text
+        end
+      end
     end
   end
 end

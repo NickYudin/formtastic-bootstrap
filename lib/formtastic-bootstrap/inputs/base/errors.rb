@@ -16,7 +16,7 @@ module FormtasticBootstrap
             options[:error_class] || builder.default_block_error_class
           end
           # template.content_tag(:span, Formtastic::Util.html_safe(errors.to_sentence.html_safe), :class => error_class)
-          template.content_tag(:span, errors.to_sentence.html_safe, :class => error_class)
+          template.content_tag(:span, html_safe(errors.to_sentence), :class => error_class)
         end
 
         def error_list_html(ignore)
@@ -36,7 +36,7 @@ module FormtasticBootstrap
             options[:error_class] || builder.default_block_error_class
           end
           # template.content_tag(:span, Formtastic::Util.html_safe(errors.first.untaint), :class => error_class)
-          template.content_tag(:span, errors.first.untaint.html_safe, :class => error_class)
+          template.content_tag(:span, html_safe(errors.first.untaint), :class => error_class)
         end
 
         def error_none_html(ignore)

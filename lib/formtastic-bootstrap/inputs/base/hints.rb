@@ -15,12 +15,20 @@ module FormtasticBootstrap
             template.content_tag(
               :span,
               # Formtastic::Util.html_safe(hint_text),
-              hint_text.html_safe,
+              html_safe(hint_text),
               :class => hint_class
             )
           end
         end
 
+        # method from formtastic 3.1
+        def html_safe(text)
+          if text.respond_to?(:html_safe)
+            text.html_safe
+          else
+            text
+          end
+        end
       end
     end
   end

@@ -24,13 +24,22 @@ module FormtasticBootstrap
         legend = field_set_legend(html_options)
         fieldset = template.content_tag(:fieldset,
           # Formtastic::Util.html_safe(legend) << Formtastic::Util.html_safe(contents),
-          legend.html_safe << contents.html_safe,
+          html_safe(legend) << html_safe(contents),
           html_options.except(:builder, :parent, :name)
         )
 
         fieldset
       end
 
+      # method from formtastic 3.1
+      def html_safe(text)
+        if text.respond_to?(:html_safe)
+          text.html_safe
+        else
+          text
+        end
+      end
+    end
     end
   end
 end

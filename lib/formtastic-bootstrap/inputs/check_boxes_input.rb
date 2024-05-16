@@ -39,6 +39,15 @@ module FormtasticBootstrap
           :class => class_name
         )
       end
+
+      # method from formtastic 3.1
+      def html_safe(text)
+        if text.respond_to?(:html_safe)
+          text.html_safe
+        else
+          text
+        end
+      end
     end
   end
 end
