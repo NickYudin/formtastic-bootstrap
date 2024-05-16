@@ -163,3 +163,4 @@ module ActionView
     include TextFieldDateHelper
 
   end
+end
