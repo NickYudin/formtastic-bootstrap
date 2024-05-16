@@ -1,3 +1,4 @@
+# overwrited to work with formtastic 4
 # Formtastic Bootstrap
 
 [![Build Status](https://travis-ci.org/mjbellantoni/formtastic-bootstrap.svg?branch=master)](https://travis-ci.org/mjbellantoni/formtastic-bootstrap)
