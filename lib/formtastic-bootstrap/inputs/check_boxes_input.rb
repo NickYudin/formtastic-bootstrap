@@ -11,9 +11,11 @@ module FormtasticBootstrap
       def to_html
         bootstrap_wrapping do
           hidden_field_for_all << # Might need to remove this guy.
-          collection.map { |choice|
-            choice_html(choice)
-          }.join("\n").html_safe
+          html_safe(
+            collection.map { |choice|
+              choice_html(choice)
+            }.join("\n")
+          )
         end
       end
 
@@ -33,18 +35,9 @@ module FormtasticBootstrap
         class_name = "checkbox"
         class_name += " checkbox-inline" if options[:inline]
         template.content_tag(:div,
-          template.capture(&block).html_safe,
+          html_safe(template.capture(&block)),
           :class => class_name
         )
-      end
-
-      # method from formtastic 3.1
-      def html_safe(text)
-        if text.respond_to?(:html_safe)
-          text.html_safe
-        else
-          text
-        end
       end
     end
   end
